@@ -109,7 +109,7 @@ if analyze_clicked:
             rules = association_rules(
                 frequent_itemsets,
                 metric="lift",
-                min_threshold=1.2
+                min_threshold=0.8
             )
 
             # Remove rules that occur only once
@@ -124,3 +124,8 @@ if analyze_clicked:
                     lhs = ", ".join(rule["antecedents"])
                     rhs = ", ".join(rule["consequents"])
                     confidence = round(rule["confidence"] * 100, 2)
+                    st.write(
+        f"• Customers who buy **{lhs}** "
+        f"are likely to also buy **{rhs}** "
+        f"with **{confidence}% probability**."
+    )
